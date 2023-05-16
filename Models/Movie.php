@@ -8,6 +8,12 @@ class Movie
     public $date;
     public $vote;
     public $image;
+    public $flagIcons = [
+        'de',
+        'en',
+        'fr',
+        'it'
+    ];
 
     public function __construct($id, $title, $original_title, $nationality, $date, $vote, $image){
         $this->id = $id;
@@ -17,5 +23,11 @@ class Movie
         $this->date = $date;
         $this->vote = $vote;
         $this->image = $image;
+    }
+
+    public function getFlag(){
+        if (in_array($this->nationality, $this->flagIcons)) {
+            return "<img style='width: 3rem;' src='img/$this->nationality.png' alt='flag_icons'>";
+        }
     }
 }
